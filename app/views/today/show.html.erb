@@ -1,0 +1,4 @@
+<h1 class="text-3xl">Good afternoon, <%= Current.user.name %></h1>
+<p class="mt-2 text-gray-500"><%= Current.firm.name %></p>
+
+<%= button_to "Sign out", session_path, method: :delete, class: "mt-6 rounded-md px-3 py-2 bg-gray-800 text-white" %>

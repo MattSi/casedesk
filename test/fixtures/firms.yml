@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+harbor:
+  name: Harbor & Pine LLP
+  time_zone: Pacific Time (US & Canada)
+
+lakeside:
+  name: Lakeside Legal
+  time_zone: Eastern Time (US & Canada)
