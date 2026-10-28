@@ -10,12 +10,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_10_28_013943) do
+ActiveRecord::Schema[8.1].define(version: 2026_10_28_023842) do
+  create_table "contacts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "firm_id", null: false
+    t.string "name", null: false
+    t.string "email"
+    t.string "phone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["firm_id", "name"], name: "index_contacts_on_firm_id_and_name"
+    t.index ["firm_id"], name: "index_contacts_on_firm_id"
+  end
+
   create_table "firms", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "time_zone", default: "Pacific Time (US & Canada)", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "matters", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "firm_id", null: false
+    t.bigint "client_id", null: false
+    t.string "number", null: false
+    t.string "title", null: false
+    t.string "practice_area"
+    t.string "status", default: "open", null: false
+    t.date "opened_on"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_matters_on_client_id"
+    t.index ["firm_id", "number"], name: "index_matters_on_firm_id_and_number", unique: true
+    t.index ["firm_id"], name: "index_matters_on_firm_id"
   end
 
   create_table "sessions", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -38,6 +64,9 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_28_013943) do
     t.index ["firm_id"], name: "index_users_on_firm_id"
   end
 
+  add_foreign_key "contacts", "firms"
+  add_foreign_key "matters", "contacts", column: "client_id"
+  add_foreign_key "matters", "firms"
   add_foreign_key "sessions", "users"
   add_foreign_key "users", "firms"
 end

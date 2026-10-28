@@ -1,0 +1,23 @@
+harrington_termination:
+  firm: harbor
+  client: harrington
+  number: "00014"
+  title: Wrongful termination claim
+  practice_area: Employment
+  status: open
+
+alvarez_injury:
+  firm: harbor
+  client: alvarez
+  number: "00022"
+  title: Personal injury, slip and fall claim
+  practice_area: Personal injury
+  status: open
+
+nguyen_contract:
+  firm: lakeside
+  client: nguyen
+  number: "00005"
+  title: Breach of contract
+  practice_area: Construction
+  status: pending

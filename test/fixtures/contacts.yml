@@ -1,0 +1,12 @@
+harrington:
+  firm: harbor
+  name: Dana Harrington
+  email: dana@example.com
+
+alvarez:
+  firm: harbor
+  name: Luis Alvarez
+
+nguyen:
+  firm: lakeside
+  name: Minh Nguyen
