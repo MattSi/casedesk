@@ -1,24 +1,13 @@
-# README
+# CaseDesk
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+[![CI](https://github.com/MattSi/casedesk/actions/workflows/ci.yml/badge.svg)](https://github.com/MattSi/casedesk/actions/workflows/ci.yml)
 
-Things you may want to cover:
+A case management app for law firms, inspired by Clio's Today page.
 
-* Ruby version
+Built with Rails 8, Hotwire, Tailwind CSS and MySQL.
 
-* System dependencies
+## Run locally
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```bash
+bin/setup
+bin/dev
