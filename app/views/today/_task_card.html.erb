@@ -1,3 +1,4 @@
+
 <article id="<%= dom_id(task) %>" class="rounded-xl border border-slate-800 bg-slate-900 p-5">
   <div class="flex items-center justify-between text-xs">
     <span class="rounded-full bg-red-500/15 px-2 py-0.5 font-medium text-red-400"><%= task.days_overdue(now) %>d overdue</span>
@@ -7,4 +8,8 @@
   <% if task.description.present? %>
     <p class="mt-1 text-sm text-slate-400"><%= task.description %></p>
   <% end %>
+
+  <%= button_to "Mark complete", task_completion_path(task),
+    class: "mt-4 rounded-md px-3 py-1.5 text-sm bg-blue-600 hover:bg-blue-500 disabled:opacity-50",
+    data: { turbo_submits_with: "Completing..." } %>
 </article>

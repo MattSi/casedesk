@@ -6,11 +6,13 @@
 <section class="mt-8">
   <h2 class="text-lg font-semibold">Top priority</h2>
 
-  <% if @overdue_tasks.any? %>
-    <div class="mt-4 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-      <%= render partial: "today/task_card", collection: @overdue_tasks, as: :task, locals: { now: @now } %>
-    </div>
-  <% else %>
-    <p class="mt-4 text-slate-400">Nothing overdue. Nice work.</p>
-  <% end %>
+  <div id="top_priority" class="mt-4">
+    <% if @overdue_tasks.any? %>
+      <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+        <%= render partial: "today/task_card", collection: @overdue_tasks, as: :task, locals: { now: @now } %>
+      </div>
+    <% else %>
+      <%= render "today/nothing_overdue" %>
+    <% end %>
+  </div>
 </section>

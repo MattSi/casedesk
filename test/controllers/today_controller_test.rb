@@ -22,6 +22,7 @@ class TodayControllerTest < ActionDispatch::IntegrationTest
     assert_select "##{dom_id(tasks(:review_settlement))}", /Review and approve Settlement Agreement/
     assert_select "##{dom_id(tasks(:review_settlement))}", /2d overdue/
     assert_select "##{dom_id(tasks(:review_settlement))}", /00014-Harrington/
+    assert_select "##{dom_id(tasks(:review_settlement))} button", "Mark complete"
     assert_no_match "Call client about mediation date", response.body   # not overdue yet
     assert_no_match "Collect intake documents", response.body           # completed
     assert_no_match "Send demand letter", response.body                 # other firm

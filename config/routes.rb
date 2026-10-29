@@ -13,4 +13,8 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "today#show"
+
+  resources :tasks, only: [] do
+    resource :completion, only: :create, module: :tasks
+  end
 end

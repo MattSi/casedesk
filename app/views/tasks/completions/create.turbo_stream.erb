@@ -1,0 +1,4 @@
+<%= turbo_stream.remove @task %>
+<% if @overdue_left.zero? %>
+  <%= turbo_stream.update "top_priority", partial: "today/nothing_overdue" %>
+<% end %>
