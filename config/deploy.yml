@@ -35,6 +35,8 @@ volumes:
 
 asset_path: /rails/public/assets
 
+# The e2-micro server has a shared CPU and boots Rails slowly, so wait longer than the default 30s
+deploy_timeout: 180
 builder:
   arch: amd64
 
