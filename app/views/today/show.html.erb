@@ -1,4 +1,16 @@
-<h1 class="text-3xl">Good afternoon, <%= Current.user.name %></h1>
-<p class="mt-2 text-gray-500"><%= Current.firm.name %></p>
+<% content_for :title, "Today" %>
 
-<%= button_to "Sign out", session_path, method: :delete, class: "mt-6 rounded-md px-3 py-2 bg-gray-800 text-white" %>
+<h1 class="text-3xl font-semibold"><%= greeting(@now) %>, <%= Current.user.name.split.first %></h1>
+<p class="mt-1 text-slate-400"><%= @now.strftime("%A, %B %-d") %></p>
+
+<section class="mt-8">
+  <h2 class="text-lg font-semibold">Top priority</h2>
+
+  <% if @overdue_tasks.any? %>
+    <div class="mt-4 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+      <%= render partial: "today/task_card", collection: @overdue_tasks, as: :task, locals: { now: @now } %>
+    </div>
+  <% else %>
+    <p class="mt-4 text-slate-400">Nothing overdue. Nice work.</p>
+  <% end %>
+</section>
