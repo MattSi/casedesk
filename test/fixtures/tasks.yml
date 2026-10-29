@@ -4,7 +4,7 @@ review_settlement:
   assignee: emily
   title: Review and approve Settlement Agreement
   description: Opposing counsel awaits signature ahead of the mediation.
-  due_at: <%= 2.days.ago %>
+  due_at: <%= 2.days.ago - 1.hour %>
   status: open
 
 review_motion:
@@ -38,4 +38,21 @@ lakeside_task:
   assignee: omar
   title: Send demand letter
   due_at: <%= 5.days.ago %>
+  status: open
+
+
+prep_mediation:
+  firm: harbor
+  matter: harrington_termination
+  assignee: emily
+  title: Prepare mediation brief
+  due_at: <%= 1.day.from_now %>
+  status: open
+
+file_appeal:
+  firm: harbor
+  matter: alvarez_injury
+  assignee: emily
+  title: File notice of appeal
+  due_at: <%= 20.days.from_now %>
   status: open

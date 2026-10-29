@@ -16,3 +16,19 @@
     <% end %>
   </div>
 </section>
+
+
+<section id="upcoming" class="mt-10">
+  <h2 class="text-lg font-semibold">Upcoming</h2>
+
+  <% if @upcoming_days.any? %>
+    <% @upcoming_days.each do |date, tasks| %>
+      <h3 class="mt-6 text-sm font-medium text-slate-400"><%= day_label(date, @now.to_date) %></h3>
+      <ul class="mt-2 divide-y divide-slate-800 rounded-xl border border-slate-800 bg-slate-900 px-5">
+        <%= render partial: "today/upcoming_task", collection: tasks, as: :task, locals: { now: @now } %>
+      </ul>
+    <% end %>
+  <% else %>
+    <p class="mt-4 text-slate-400">Nothing due in the next 7 days.</p>
+  <% end %>
+</section>

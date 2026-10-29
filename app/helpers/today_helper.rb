@@ -6,4 +6,13 @@ module TodayHelper
     else "Good evening"
     end
   end
+
+
+  def day_label(date, today)
+    case date
+    when today then "Today"
+    when today.tomorrow then "Tomorrow"
+    else date.strftime("%A, %B %-d")
+    end
+  end
 end
