@@ -60,6 +60,7 @@ production:
     database: casedesk_production
     username: casedesk
     password: <%= ENV["CASEDESK_DATABASE_PASSWORD"] %>
+    host: <%= ENV["DB_HOST"] %>
   cache:
     <<: *primary_production
     database: casedesk_production_cache
@@ -68,6 +69,7 @@ production:
     <<: *primary_production
     database: casedesk_production_queue
     migrations_paths: db/queue_migrate
+    max_connections: 5
   cable:
     <<: *primary_production
     database: casedesk_production_cable
