@@ -1,0 +1,41 @@
+review_settlement:
+  firm: harbor
+  matter: harrington_termination
+  assignee: emily
+  title: Review and approve Settlement Agreement
+  description: Opposing counsel awaits signature ahead of the mediation.
+  due_at: <%= 2.days.ago %>
+  status: open
+
+review_motion:
+  firm: harbor
+  matter: alvarez_injury
+  assignee: emily
+  title: Review draft Motion for Summary Judgment
+  due_at: <%= 1.day.ago %>
+  status: open
+
+call_client:
+  firm: harbor
+  matter: harrington_termination
+  assignee: emily
+  title: Call client about mediation date
+  due_at: <%= 3.days.from_now %>
+  status: open
+
+old_intake:
+  firm: harbor
+  matter: alvarez_injury
+  assignee: emily
+  title: Collect intake documents
+  due_at: <%= 10.days.ago %>
+  status: completed
+  completed_at: <%= 9.days.ago %>
+
+lakeside_task:
+  firm: lakeside
+  matter: nguyen_contract
+  assignee: omar
+  title: Send demand letter
+  due_at: <%= 5.days.ago %>
+  status: open

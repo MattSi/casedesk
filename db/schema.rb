@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_10_28_023842) do
+ActiveRecord::Schema[8.1].define(version: 2026_10_29_002924) do
   create_table "contacts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "firm_id", null: false
     t.string "name", null: false
@@ -53,6 +53,22 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_28_023842) do
     t.index ["user_id"], name: "index_sessions_on_user_id"
   end
 
+  create_table "tasks", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "firm_id", null: false
+    t.bigint "matter_id", null: false
+    t.bigint "assignee_id", null: false
+    t.string "title", null: false
+    t.text "description"
+    t.datetime "due_at"
+    t.string "status", default: "open", null: false
+    t.datetime "completed_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["assignee_id"], name: "index_tasks_on_assignee_id"
+    t.index ["firm_id"], name: "index_tasks_on_firm_id"
+    t.index ["matter_id"], name: "index_tasks_on_matter_id"
+  end
+
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "firm_id", null: false
     t.string "name", null: false
@@ -68,5 +84,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_28_023842) do
   add_foreign_key "matters", "contacts", column: "client_id"
   add_foreign_key "matters", "firms"
   add_foreign_key "sessions", "users"
+  add_foreign_key "tasks", "firms"
+  add_foreign_key "tasks", "matters"
+  add_foreign_key "tasks", "users", column: "assignee_id"
   add_foreign_key "users", "firms"
 end

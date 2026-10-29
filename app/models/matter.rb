@@ -2,6 +2,8 @@ class Matter < ApplicationRecord
   belongs_to :firm
   belongs_to :client, class_name: "Contact"
 
+  has_many :tasks, dependent: :destroy
+
   enum :status, { open: "open", pending: "pending", closed: "closed" }, validate: true
 
   before_validation :assign_number, on: :create
