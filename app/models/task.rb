@@ -17,6 +17,11 @@ class Task < ApplicationRecord
     update!(status: :completed, completed_at: Time.current)
   end
 
+  # Used to sort tasks and events together in Upcoming
+  def scheduled_at
+    due_at
+  end
+
   def overdue?(now = Time.current)
     open? && due_at.present? && due_at < now
   end

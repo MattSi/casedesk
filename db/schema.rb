@@ -10,7 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_10_29_002924) do
+ActiveRecord::Schema[8.1].define(version: 2026_10_29_014316) do
+  create_table "calendar_events", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "firm_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "matter_id"
+    t.string "title", null: false
+    t.string "location"
+    t.datetime "starts_at", null: false
+    t.datetime "ends_at", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["firm_id"], name: "index_calendar_events_on_firm_id"
+    t.index ["matter_id"], name: "index_calendar_events_on_matter_id"
+    t.index ["user_id"], name: "index_calendar_events_on_user_id"
+  end
+
   create_table "contacts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "firm_id", null: false
     t.string "name", null: false
@@ -80,6 +95,9 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_29_002924) do
     t.index ["firm_id"], name: "index_users_on_firm_id"
   end
 
+  add_foreign_key "calendar_events", "firms"
+  add_foreign_key "calendar_events", "matters"
+  add_foreign_key "calendar_events", "users"
   add_foreign_key "contacts", "firms"
   add_foreign_key "matters", "contacts", column: "client_id"
   add_foreign_key "matters", "firms"

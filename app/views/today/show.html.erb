@@ -22,10 +22,16 @@
   <h2 class="text-lg font-semibold">Upcoming</h2>
 
   <% if @upcoming_days.any? %>
-    <% @upcoming_days.each do |date, tasks| %>
+    <% @upcoming_days.each do |date, items| %>
       <h3 class="mt-6 text-sm font-medium text-slate-400"><%= day_label(date, @now.to_date) %></h3>
       <ul class="mt-2 divide-y divide-slate-800 rounded-xl border border-slate-800 bg-slate-900 px-5">
-        <%= render partial: "today/upcoming_task", collection: tasks, as: :task, locals: { now: @now } %>
+          <% items.each do |item| %>
+          <% if item.is_a?(Task) %>
+            <%= render "today/upcoming_task", task: item, now: @now %>
+          <% else %>
+            <%= render "today/upcoming_event", event: item, now: @now %>
+          <% end %>
+        <% end %>
       </ul>
     <% end %>
   <% else %>

@@ -1,0 +1,11 @@
+<li id="<%= dom_id(event) %>" class="flex items-center gap-4 py-3">
+  <span class="w-1 self-stretch rounded-full bg-emerald-500"></span>
+  <div class="min-w-0">
+    <p class="truncate font-medium"><%= event.title %></p>
+    <p class="text-sm text-slate-400">
+      <%= event.starts_at.in_time_zone(now.time_zone).strftime("%-l:%M %p") %> – <%= event.ends_at.in_time_zone(now.time_zone).strftime("%-l:%M %p") %>
+      <% if event.matter %> · <%= event.matter.display_name %><% end %>
+      <% if event.location.present? %> · <%= event.location %><% end %>
+    </p>
+  </div>
+</li>

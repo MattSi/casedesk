@@ -1,0 +1,31 @@
+mediation:
+  firm: harbor
+  user: emily
+  matter: harrington_termination
+  title: Mediation session
+  location: Vancouver Mediation Centre
+  starts_at: <%= 2.days.from_now %>
+  ends_at: <%= 2.days.from_now + 3.hours %>
+
+team_meeting:
+  firm: harbor
+  user: emily
+  title: Weekly team meeting
+  starts_at: <%= 1.day.from_now + 2.hours %>
+  ends_at: <%= 1.day.from_now + 3.hours %>
+
+past_conference:
+  firm: harbor
+  user: emily
+  matter: alvarez_injury
+  title: Case conference
+  starts_at: <%= 3.days.ago %>
+  ends_at: <%= 3.days.ago + 1.hour %>
+
+omar_call:
+  firm: lakeside
+  user: omar
+  matter: nguyen_contract
+  title: Client call
+  starts_at: <%= 10.days.from_now %>
+  ends_at: <%= 10.days.from_now + 30.minutes %>

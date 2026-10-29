@@ -54,4 +54,15 @@ class TodayControllerTest < ActionDispatch::IntegrationTest
     get root_url
     assert_match "Nothing due in the next 7 days", response.body
   end
+
+
+  test "upcoming mixes events and tasks in time order" do
+    sign_in_as users(:emily)
+    get root_url
+    upcoming = css_select("#upcoming").text
+    order = [ "Prepare mediation brief", "Weekly team meeting", "Mediation session", "Call client about mediation date" ]
+    assert_equal order, order.sort_by { |title| upcoming.index(title) }
+    assert_includes upcoming, "Vancouver Mediation Centre"
+    assert_not_includes upcoming, "Case conference"   # in the past
+  end
 end
