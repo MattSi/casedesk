@@ -65,4 +65,16 @@ class TodayControllerTest < ActionDispatch::IntegrationTest
     assert_includes upcoming, "Vancouver Mediation Centre"
     assert_not_includes upcoming, "Case conference"   # in the past
   end
+
+
+  test "top priority shows at most 10 tasks, oldest first" do
+    12.times do |i|
+      Task.create!(matter: matters(:harrington_termination), assignee: users(:emily),
+                   title: "Old task #{i}", due_at: (30 + i).days.ago)
+    end
+    sign_in_as users(:emily)
+    get root_url
+    assert_select "#top_priority article", 10
+    assert_select "#top_priority article:first-child", /Old task 11/
+  end
 end

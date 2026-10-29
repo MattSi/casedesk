@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_10_29_014316) do
+ActiveRecord::Schema[8.1].define(version: 2026_10_29_023753) do
   create_table "calendar_events", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "firm_id", null: false
     t.bigint "user_id", null: false
@@ -23,7 +23,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_29_014316) do
     t.datetime "updated_at", null: false
     t.index ["firm_id"], name: "index_calendar_events_on_firm_id"
     t.index ["matter_id"], name: "index_calendar_events_on_matter_id"
-    t.index ["user_id"], name: "index_calendar_events_on_user_id"
+    t.index ["user_id", "starts_at"], name: "index_calendar_events_on_user_id_and_starts_at"
   end
 
   create_table "contacts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -79,7 +79,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_29_014316) do
     t.datetime "completed_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["assignee_id"], name: "index_tasks_on_assignee_id"
+    t.index ["assignee_id", "status", "due_at"], name: "index_tasks_on_assignee_id_and_status_and_due_at"
     t.index ["firm_id"], name: "index_tasks_on_firm_id"
     t.index ["matter_id"], name: "index_tasks_on_matter_id"
   end
